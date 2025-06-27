@@ -2,11 +2,11 @@ const db = require('../db');
 
 exports.criarTransacao = async (req, res) =>{
 
-    const { titulo, preco, categoria, data } = req.body;
+    const { titulo, preco, categoria, data,tipo } = req.body;
 
     try{
         const resultado = await db.query(
-            'INSERT INTO transacoes (titulo, preco, categoria, data) VALUES ($1, $2, $3, $4) RETURNING *', [titulo,preco,categoria,data]
+            'INSERT INTO transacoes (titulo, preco, categoria, data, tipo) VALUES ($1, $2, $3, $4, $5) RETURNING *', [titulo,preco,categoria,data,tipo]
         );
         res.status(201).json(resultado.rows[0]);
 
