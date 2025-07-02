@@ -1,10 +1,12 @@
 const express = require ('express');
 const router = express.Router();
-const transacoesController = require('../controllers/transacoesController');
+const tc      = require('../controllers/transacoesController');
 
+router.get('/resumo', tc.resumoMensal);
 
-router.post('/', transacoesController.criarTransacao)
-router.get('/', transacoesController.listarTransacao)
+router.get('/',    tc.listarTransacao);
+router.post('/',   tc.criarTransacao);
 
+router.get('/resumo-por-categoria', tc.resumoPorCategoria);
 
 module.exports = router
